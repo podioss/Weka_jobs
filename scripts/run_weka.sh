@@ -3,7 +3,7 @@
 #dependent script wekacsv.sh 
 #kmeans_no.jar required in the same directory with this script
 
-RES_DIR="/opt/Weka_jobs/4cores_4GBram/ds??????"
+RES_DIR="/opt/Weka_jobs/4cores_4GBram/ds6/dim10"
 RRDS="/var/lib/ganglia/rrds/thesis-cluster"
 RRDS_MASTER="${RRDS}/master"
 MASTER_METRICS=(bytes_in.rrd bytes_out.rrd mem_buffers.rrd mem_cached.rrd mem_free.rrd cpu_idle.rrd cpu_system.rrd cpu_steal.rrd cpu_user.rrd cpu_wio.rrd)
@@ -68,18 +68,19 @@ JVM_HEAP=$2
 #add attribute numbers to be the first line of the csv file
 #the name of the file remains unchanged
 LOGFILE=script_output
+[ -e "$LOGFILE" ] && rm -f $LOGFILE
 touch $LOGFILE
-log "[+]Creating the correct csv file for weka"
-./wekacsv.sh $INFILE
+log "Creating the correct csv file for weka"
+[ -e "${INFILE##*/}" ] || ./wekacsv.sh $INFILE
 
 #number of iterations
 for i in 10
 do
     #number of clusters
-    for c in 10 100
+    for c in 100 #100
     do
-        $JOB_DIR="${RES_DIR}/clus${c}/iter${i}"
-        $JOB_NAME="Weka_ds??_dim??_clus{c}_iter10"
+        JOB_DIR="${RES_DIR}/clus${c}/iter${i}"
+        JOB_NAME="Weka_ds6_dim10_clus${c}_iter10"
         log "Flushing caches, we want nothing buffered in memory"
         sync ; echo 3 >/proc/sys/vm/drop_caches
         log "Starting iostat process" 
@@ -90,12 +91,13 @@ do
         sleep 30
         log "Starting job $JOB_NAME with $JVM_HEAP heap size and input file ${INFILE}"
         JOB_START_TIME=`date +%s`
-        java -Xmx${JVM_HEAP} -jar kmeans_no.jar $INFILE $c 10 >$JOB_DIR/stdout 2>$JOB_DIR/stderr &
+        java -Xmx${JVM_HEAP}m -jar kmeans_no.jar $INFILE $c 10 >$JOB_DIR/stdout 2>$JOB_DIR/stderr &
         JOB_PID=$!
         log "Waiting for the job to complete..."
         wait $JOB_PID
         JOB_END_TIME=`date +%s`
-        echo "Job has just ended, sleeping for 45 secs..." >>script_output
+        log "Job has just ended, sleeping for 45 secs..."
+	sleep 45
         GANGLIA_EVENT_STOP=`date +%s`
         log "Killing iostat process"
         kill -SIGTERM $IOSTAT_PID

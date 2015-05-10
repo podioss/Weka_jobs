@@ -14,4 +14,4 @@ ARGS=`head -1 $1 | awk -F, '{print NF}'`
 echo "`seq -s ','  1 $ARGS`">$TEMP_CSV
 cat $CSV >>$TEMP_CSV
 #rm -f $CSV
-#mv $TEMP_CSV $CSV
+mv $TEMP_CSV ${CSV##*/}
