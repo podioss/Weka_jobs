@@ -1,0 +1,4 @@
+Running KMeans on file /opt/datagen/randomData/dim1000/n5d1000
+For K: 100
+You chose max iterations to be: 10
+[GenericPropertiesCreator] classloader in use is not the system classloader: using static entries in weka/gui/GenericObjectEditor.props rather than dynamic class discovery.

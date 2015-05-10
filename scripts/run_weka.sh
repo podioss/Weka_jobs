@@ -3,7 +3,7 @@
 #dependent script wekacsv.sh 
 #kmeans_no.jar required in the same directory with this script
 
-RES_DIR="/opt/Weka_jobs/4cores_4GBram/ds6/dim10"
+RES_DIR="/opt/Weka_jobs/4cores_4GBram/ds6/dim100"
 RRDS="/var/lib/ganglia/rrds/thesis-cluster"
 RRDS_MASTER="${RRDS}/master"
 MASTER_METRICS=(bytes_in.rrd bytes_out.rrd mem_buffers.rrd mem_cached.rrd mem_free.rrd cpu_idle.rrd cpu_system.rrd cpu_steal.rrd cpu_user.rrd cpu_wio.rrd)
@@ -67,9 +67,6 @@ INFILE=$1
 JVM_HEAP=$2
 #add attribute numbers to be the first line of the csv file
 #the name of the file remains unchanged
-LOGFILE=script_output
-[ -e "$LOGFILE" ] && rm -f $LOGFILE
-touch $LOGFILE
 log "Creating the correct csv file for weka"
 [ -e "${INFILE##*/}" ] || ./wekacsv.sh $INFILE
 
@@ -77,10 +74,13 @@ log "Creating the correct csv file for weka"
 for i in 10
 do
     #number of clusters
-    for c in 100 #100
+    for c in 10 100
     do
+    	LOGFILE=script_output
+	[ -e "$LOGFILE" ] && rm -f $LOGFILE
+	touch $LOGFILE
         JOB_DIR="${RES_DIR}/clus${c}/iter${i}"
-        JOB_NAME="Weka_ds6_dim10_clus${c}_iter10"
+        JOB_NAME="Weka_ds6_dim100_clus${c}_iter10"
         log "Flushing caches, we want nothing buffered in memory"
         sync ; echo 3 >/proc/sys/vm/drop_caches
         log "Starting iostat process" 
@@ -113,5 +113,5 @@ do
     done
 done
 
-
+echo "weka ds6dim100 for 10&100 clusters just ended" | ssmtp gregafen@hotmail.com
 
