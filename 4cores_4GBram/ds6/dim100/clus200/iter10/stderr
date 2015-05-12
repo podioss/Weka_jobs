@@ -1,0 +1,15 @@
+Exception in thread "main" java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader.main(JarRsrcLoader.java:58)
+Caused by: java.lang.OutOfMemoryError: GC overhead limit exceeded
+	at sun.misc.FloatingDecimal$ASCIIToBinaryBuffer.doubleValue(FloatingDecimal.java:1248)
+	at sun.misc.FloatingDecimal.parseDouble(FloatingDecimal.java:110)
+	at java.lang.Double.parseDouble(Double.java:538)
+	at java.lang.Double.valueOf(Double.java:502)
+	at weka.core.converters.CSVLoader.getInstance(CSVLoader.java:807)
+	at weka.core.converters.CSVLoader.getDataSet(CSVLoader.java:646)
+	at kmeans_weka.KMeans.main(KMeans.java:42)
+	... 5 more
