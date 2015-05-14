@@ -1,0 +1,49 @@
+FILE="Weka_4cores_4GBram_diskioout_train_data"
+METRIC="diskio_out_data"
+echo "data_points,dimensions,k,diskio_out" >$FILE
+
+for ds in 4
+do
+	for dim in 10 100 1000 10000 50 500 5000
+	do
+		for clus in 10 100 200
+		do
+			for iter in 10
+			do
+				tail -1 /opt/Weka_jobs/4cores_4GBram/ds${ds}/dim${dim}/clus${clus}/iter${iter}/model_data/${METRIC} >> $FILE
+			done
+		done
+	done
+done
+
+
+
+for ds in 5
+do
+	for dim in 10 100 1000 50 500 
+	do
+		for clus in 10 100 200
+		do
+			for iter in 10
+			do
+				tail -1 /opt/Weka_jobs/4cores_4GBram/ds${ds}/dim${dim}/clus${clus}/iter${iter}/model_data/${METRIC} >> $FILE
+			done
+		done
+	done
+done
+
+
+
+for ds in 6
+do
+	for dim in 10 100 50 
+	do
+		for clus in 10 100 200
+		do
+			for iter in 10
+			do
+				tail -1 /opt/Weka_jobs/4cores_4GBram/ds${ds}/dim${dim}/clus${clus}/iter${iter}/model_data/${METRIC} >> $FILE
+			done
+		done
+	done
+done
