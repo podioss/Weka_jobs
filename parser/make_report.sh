@@ -2,12 +2,12 @@
 #It depends on metricsparser.py and memparser.py scripts 
 
 METRICSPARSER="./metricsparser.py"
-MEMPARSER="??????/memparser.py"
-for ds in 6 #dataset sizes
+MEMPARSER="./memparser.py"
+for ds in 4 #dataset sizes
 do
-    for d in 50 #dimensions
+    for d in 10 100 1000 10000 50 500 5000 #dimensions
     do
-        for c in 100 #clusters
+        for c in 10 100 200 #clusters
         do
             for i in 10 #iterations
             do
