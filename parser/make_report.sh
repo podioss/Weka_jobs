@@ -3,9 +3,9 @@
 
 METRICSPARSER="./metricsparser.py"
 MEMPARSER="./memparser.py"
-for ds in 5 #dataset sizes
+for ds in 6 #dataset sizes
 do
-    for d in 10 100 1000 50 500 #dimensions
+    for d in 10 100 50 #dimensions
     do
         for c in 10 100 200 #clusters
         do

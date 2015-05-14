@@ -1,0 +1,2 @@
+data_points,dimensions,k,diskio_out
+1000000,10,100,19
