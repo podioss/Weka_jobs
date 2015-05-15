@@ -1,2 +1,2 @@
 # Weka_jobs
-profilling kmeans implementation of weka - metrics gathered with ganglia
+profiling kmeans implementation of weka - metrics gathered with ganglia
