@@ -1,4 +1,14 @@
-Running KMeans on file /opt/datagen/randomData/dim1000/n5d1000
+Running KMeans on file n5d1000
 For K: 10
 You chose max iterations to be: 10
 [GenericPropertiesCreator] classloader in use is not the system classloader: using static entries in weka/gui/GenericObjectEditor.props rather than dynamic class discovery.
+Cluster 0 size: 9774
+Cluster 1 size: 9947
+Cluster 2 size: 10226
+Cluster 3 size: 10622
+Cluster 4 size: 10321
+Cluster 5 size: 9576
+Cluster 6 size: 9732
+Cluster 7 size: 9910
+Cluster 8 size: 10597
+Cluster 9 size: 9294
