@@ -10,7 +10,7 @@ ifd=open(sys.argv[1],"r") #input file
 ofd=open(sys.argv[2],"w") #output file
 
 #4194304  8388608  16777216
-mem_total=16777216 #total memory of the nodes in kb(=4GB)
+mem_total=8388608 #total memory of the nodes in kb(=4GB)
 mem_used_acc=0
 counter=0
 for line in ifd.readlines():
