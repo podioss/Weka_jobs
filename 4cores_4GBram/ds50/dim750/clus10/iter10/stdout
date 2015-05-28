@@ -1,0 +1,14 @@
+Running KMeans on file n50d750
+For K: 10
+You chose max iterations to be: 10
+[GenericPropertiesCreator] classloader in use is not the system classloader: using static entries in weka/gui/GenericObjectEditor.props rather than dynamic class discovery.
+Cluster 0 size: 5260
+Cluster 1 size: 4905
+Cluster 2 size: 4784
+Cluster 3 size: 5232
+Cluster 4 size: 4971
+Cluster 5 size: 5177
+Cluster 6 size: 4659
+Cluster 7 size: 4784
+Cluster 8 size: 5337
+Cluster 9 size: 4891
