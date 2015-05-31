@@ -18,7 +18,7 @@
 #done
 function collect {  # 1:FILE 2:METRIC 3:LABEL
 echo "data_points,dimensions,k,$3" > $1
-for ds in 50
+for ds in 25
 do
 	for dim in 10 50 100 250 500 750 1000 
 	do
