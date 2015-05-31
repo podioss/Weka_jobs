@@ -1,2 +1,2 @@
 data_points,dimensions,k,diskio_in
-25000,10,1000,42
+50000,10,1000,42
