@@ -3,9 +3,9 @@
 
 METRICSPARSER="./metricsparser.py"
 MEMPARSER="./memparser.py"
-for ds in 5  #dataset sizes
+for ds in 50  #dataset sizes
 do
-    for d in 750 #dimensions
+    for d in 10 50 100 250 500 750 1000 #dimensions
     do
         for c in 10 100 200 300 400 500 600 700 800 900 1000 1200 1400 1600 #clusters
         do
@@ -40,7 +40,7 @@ do
                 
                 #create the 4 final data point for the job
                 mkdir -p $MODEL_DATA
-                POINTS=$(echo "10^$ds" | bc)
+                POINTS=50000     #$(echo "10^$ds" | bc)
                 DISK_IO_IN=`cut -d',' -f5 $PARSED/iostat_csv | paste -sd+ | bc`
                 DISK_IO_OUT=`cut -d',' -f6 $PARSED/iostat_csv | paste -sd+ | bc`
                 
